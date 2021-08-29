@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState , useContext} from 'react'
+import { ItemContext } from '../Contexts/ItemContext'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, } from 'react-native'
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
 
-const AddItem = ({addItem}) => {
+const AddItem = () => {
+    const {addItem} = useContext(ItemContext)
     const [text, setText] = useState('')
 
     const onChange = (textValue) => setText(textValue)

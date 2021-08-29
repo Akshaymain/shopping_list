@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 import Header from './components/Header';
 import ListView from './components/ListView'
 import AddItem from './components/AddItem';
+import { ItemContext } from './Contexts/ItemContext';
 
 
 const App = () => {
@@ -45,13 +46,15 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Header />
-      <AddItem addItem={addItem} />
+      <ItemContext.Provider value = {{items,setItems,addItem}}>
+      <AddItem/>
       <FlatList
         data={items}
         renderItem={
           ({ item }) => <ListView item={item} deleteItem={deleteItem}></ListView>
         }
       />
+      </ItemContext.Provider>
     </View>
   );
 }
